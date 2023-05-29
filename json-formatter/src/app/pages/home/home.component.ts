@@ -11,7 +11,7 @@ import { AceConfigInterface, AceDirective } from 'ngx-ace-wrapper';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  public content: string = '';
+  public content: string = '{\n  "diga": "Olá dev 👋"\n}';
   public config: AceConfigInterface = {
     mode: 'json',
     theme: 'dracula',
@@ -48,12 +48,14 @@ export class HomeComponent {
   }
 
   public formatJson(value: string): void {
-    console.log('Aqui no JsonFormat');
     try {
-      this.content = JSON.parse(value);
-      console.log('content', this.content);
-    } catch(e) {
-      console.log('Erro');
+      if (this.content) {
+        const cleanedValue = value.replace(/[\u0000-\u001F\u007F-\u009F]/g, ''); // Remove caracteres de controle inválidos
+        const formattedJson = JSON.stringify(JSON.parse(cleanedValue), null, 2);
+        this.content = formattedJson;
+      }
+    } catch (error) {
+      console.error('Erro ao formatar o JSON:', error);
     }
-  }
+  }  
 }
