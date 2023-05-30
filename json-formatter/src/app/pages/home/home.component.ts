@@ -1,9 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
 import 'brace';
 import 'brace/mode/json';
 import 'brace/theme/dracula';
-import { AceConfigInterface, AceDirective } from 'ngx-ace-wrapper';
+import { AceConfigInterface } from 'ngx-ace-wrapper';
 import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
@@ -18,8 +18,6 @@ export class HomeComponent {
     theme: 'dracula',
     readOnly: false
   };
-
-  @ViewChild(AceDirective, { static: false }) directiveRef?: AceDirective;
 
   constructor(
     private clipBoard: ClipboardService
