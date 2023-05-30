@@ -4,6 +4,7 @@ import 'brace';
 import 'brace/mode/json';
 import 'brace/theme/dracula';
 import { AceConfigInterface, AceDirective } from 'ngx-ace-wrapper';
+import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'app-home',
@@ -20,18 +21,12 @@ export class HomeComponent {
 
   @ViewChild(AceDirective, { static: false }) directiveRef?: AceDirective;
 
-  constructor() { }
+  constructor(
+    private clipBoard: ClipboardService
+  ) { }
 
   public clear(): void {
-    this.directiveRef?.clear();
-  }
-
-  public onEditorBlur(event: any): void {
-    console.log('Editor blur:', event);
-  }
-
-  public onEditorFocus(event: any): void {
-    console.log('Editor focus:', event);
+    this.content = '';
   }
 
   public onValueChange(value: string): void {
@@ -47,15 +42,19 @@ export class HomeComponent {
     console.log('Selection change:', event);
   }
 
+  public copy(): void {
+    this.clipBoard.copy(this.content);
+  }
+
   public formatJson(value: string): void {
     try {
       if (this.content) {
-        const cleanedValue = value.replace(/[\u0000-\u001F\u007F-\u009F]/g, ''); // Remove caracteres de controle inválidos
+        const cleanedValue = value.replace(/[\u0000-\u001F\u007F-\u009F]/g, '');
         const formattedJson = JSON.stringify(JSON.parse(cleanedValue), null, 2);
         this.content = formattedJson;
       }
     } catch (error) {
       console.error('Erro ao formatar o JSON:', error);
     }
-  }  
+  }
 }
