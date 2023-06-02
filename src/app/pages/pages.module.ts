@@ -6,6 +6,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { HomeComponent } from './home/home.component';
 import { ACE_CONFIG, AceConfigInterface, AceModule } from 'ngx-ace-wrapper';
 import { ClipboardModule } from 'ngx-clipboard';
+import { SharedModule } from '../shared/shared.module';
 
 const DEFAULT_ACE_CONFIG: AceConfigInterface = {};
 @NgModule({
@@ -17,6 +18,7 @@ const DEFAULT_ACE_CONFIG: AceConfigInterface = {};
     PagesRoutingModule,
     ClipboardModule,
     CommonModule,
+    SharedModule,
     AceModule,
   ],
   providers: [
