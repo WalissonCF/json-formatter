@@ -19,6 +19,7 @@ export class HomeComponent {
     theme: 'dracula',
     readOnly: false
   };
+  public isPopUpVisible: boolean = true;
 
   constructor(
     private clipBoard: ClipboardService
@@ -46,5 +47,13 @@ export class HomeComponent {
     } catch (error) {
       console.error('Erro ao formatar o JSON:', error);
     }
+  }
+
+  public uploadFileJson(): void {
+    
+  }
+
+  public closePopUp(): void {
+    this.isPopUpVisible = false;
   }
 }
