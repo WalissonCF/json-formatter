@@ -1,4 +1,19 @@
-<app-pop-up [showPopUp]="isPopUpVisible" (closePopUp)="closePopUp()"></app-pop-up>
+<app-pop-up [showPopUp]="isPopUpVisible" (closePopUp)="closePopUp()">
+    <div class="w-full px-3 mt-3 py-3">
+        <select id="default"
+            class="bg-gray-50 border border-gray-300 text-gray-900 mb-2 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-[#282a36] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option selected disabled value="">TypeScript</option>
+        </select>
+    </div>
+    <div class="w-full flex mb-auto justify-center mt-0 px-3 text-center">
+        <app-button
+            class="w-full bg-[#282a36] text-white font-semibold text-sm rounded-md py-2.5 mb-3 focus:outline-none hover:bg-indigo-400 focus:ring-1 focus:ring-purple-300 cursor-pointer"
+            buttonType="button" ariaLabel="Baixar arquivo">
+            <span class="sr-only">Baixar arquivo</span>
+            Baixar arquivo
+        </app-button>
+    </div>
+</app-pop-up>
 
 <div class="w-full h-screen md:container md:mx-auto flex justify-center bg-[#3d3f4a] flex-col items-center">
     <div class="box-content h-4/5 w-4/5 mt-auto mb-auto rounded-lg shadow-xl bg-[#282a36]">
@@ -23,7 +38,7 @@
     <div class="w-4/5 flex mb-auto justify-end mt-0">
         <app-button tabindex="2"
             cssClass="bg-[#282a36] text-white font-semibold text-sm rounded-md px-5 py-2.5 mr-2 mb-2 focus:outline-none hover:bg-indigo-400 focus:ring-1 focus:ring-purple-300"
-            buttonType="button" (clicked)="copy()" ariaLabel="Exportar">
+            buttonType="button" (clicked)="openModal()" ariaLabel="Exportar">
             <span class="sr-only">Exportar</span>
             Exportar
         </app-button>

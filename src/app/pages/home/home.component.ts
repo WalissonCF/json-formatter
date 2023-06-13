@@ -14,12 +14,12 @@ import 'brace/theme/dracula';
 })
 export class HomeComponent {
   public jsonContent: string = '{\n  "diga": "Olá dev 👋"\n}';
+  public isPopUpVisible: boolean = false;
   public config: AceConfigInterface = {
     mode: 'json',
     theme: 'dracula',
     readOnly: false
   };
-  public isPopUpVisible: boolean = true;
 
   constructor(
     private clipBoard: ClipboardService
@@ -50,7 +50,11 @@ export class HomeComponent {
   }
 
   public uploadFileJson(): void {
-    
+
+  }
+
+  public openModal(): void {
+    this.isPopUpVisible = true;
   }
 
   public closePopUp(): void {
